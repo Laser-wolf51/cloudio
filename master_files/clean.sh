@@ -1,5 +1,4 @@
 #!/bin/bash
-# above: 'shebang'. specify what program should run this script.
 
 #
 # Description: clean the app
@@ -13,5 +12,5 @@ echo "sleeps before cleaning so that master can close plugins dir..."
 sleep 5
 echo "make clean:"
 make clean
-rm ./plugins/
+rm ./plugins/ ./mnt
 echo "done! all clear."

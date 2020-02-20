@@ -1,11 +1,9 @@
 #!/bin/bash
-# above: 'shebang'. specify what program should run this script.
 
-# test for the master version (with storage to disc)
+# test for the application
 
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# !! NEVER EVER CLOSE THE PROG WITHOUT UNMOUNT !!
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+### AVOID CLOSING THE PROG WITHOUT UNMOUNT ###
+
 echo "creating nbd devices"
 sudo modprobe nbd
 echo "config the nbd to size of 4 kb"
