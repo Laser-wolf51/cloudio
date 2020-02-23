@@ -15,7 +15,8 @@ echo "calling make"
 make master
 
 sudo gnome-terminal -x sh -c '
-sleep 30
+echo "sleeps 10 seconds..."
+sleep 10
 echo "creating ext4:"
 sudo mkfs.ext4 /dev/nbd0
 echo "mkdir mnt"
@@ -40,9 +41,6 @@ exec bash'
 
 echo "run: ./cloudio_master.out /dev/nbd0"
 sudo ./cloudio_master.out /dev/nbd0;
-
-# test if having troubles:
-# enter: dd if=/dev/zero of=/dev/nbd0 bs=1b count=1 oflag=dsync
 
 # NOTE: the path "/usr/local/lib" was added to a file named "/etc/ld.so.conf",
 # then a command "sudo ldconfig" was entered.

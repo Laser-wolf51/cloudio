@@ -29,11 +29,12 @@ Requirements: Linux OS, download libconfig.
 
 1. in the slave directory - run 'make slave'.
 2. copy to the slave devices the files:
-'cloudio_slave.out', 'run_slave.sh', 'slave_config.cfg'.
+cloudio_slave.out, run.sh, slave_config.cfg, liball_cpp.so, libglobal.so.
 3. in the master directory - run 'make master'.
 4. copy to the master device the files:
-cloudio_master.out, run_master.sh, clean.sh, test_script.sh, master_config.cfg.
+cloudio_master.out, run.sh, master_config.cfg, liball_cpp.so, libglobal.so,
+plugins/ .
 
 # How to run:
-1. fill the configuration files.
+1. in the configuration files, update the master_ip.
 2. run the 'run...' script.
