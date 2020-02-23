@@ -44,4 +44,6 @@ sudo ./cloudio_master.out /dev/nbd0;
 # test if having troubles:
 # enter: dd if=/dev/zero of=/dev/nbd0 bs=1b count=1 oflag=dsync
 
-
+# NOTE: the path "/usr/local/lib" was added to a file named "/etc/ld.so.conf",
+# then a command "sudo ldconfig" was entered.
+# this allowed my program to find and link the libconfig files.
