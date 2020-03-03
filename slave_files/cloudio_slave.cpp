@@ -19,14 +19,14 @@
 #include <cstring>	// memset
 #include <iostream>
 
-#include "driver_proxy.hpp"
-#include "handleton.hpp"
-#include "request_engine.hpp"
-#include "check_fail.hpp"
-#include "storage.hpp"
-#include "tasks.hpp"
-#include "gateways.hpp"
-#include "driver_proxy_slave.hpp"
+#include "./driver_proxy/driver_proxy.hpp"
+#include "./driver_proxy/driver_proxy_slave.hpp"
+#include "./RE/request_engine.hpp"
+#include "./RE/tasks/tasks.hpp"
+#include "./RE/gateway/gateways.hpp"
+#include "./storage/storage.hpp"
+#include "./utils/handleton/handleton.hpp"
+#include "./utils/fail_checker/fail_checker.hpp"
 
 using namespace hrd8;
 
@@ -83,7 +83,7 @@ int main()
 		
 		
 		// create handletonic factory + load it with task funcs.
-		// TODO: there still is a bug in the handleton. untill it will come to
+		// there is a bug in the handleton. untill it will come to
 		// justice - not using p&p
 		update_factory();
 		

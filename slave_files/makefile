@@ -14,18 +14,49 @@ SLAVE_src = cloudio_slave.cpp
 SLAVE_out = cloudio_slave.out
 
 # for global.so
-global_source = global.cpp
+global_source = utils/handleton/global.cpp
 globals_lib = libglobal.so
 
-# for liball_cpp.cpp
-filtered = $(SLAVE_src) $(global_source)
-sources = $(filter-out $(filtered), $(wildcard *.cpp))
-headers = $(wildcard *.hpp)
-objects = $(sources:.cpp=.o)
-all_cpp_lib = liball_cpp.so
+# for all_src_lib
+sources = \
+	driver_proxy/udp_util/udp_util.cpp \
+	driver_proxy/driver_data.cpp \
+	driver_proxy/driver_proxy_slave.cpp \
+	RE/gateway/gateways.cpp \
+	RE/pnp/plug_and_play.cpp \
+	RE/tasks/tasks.cpp \
+	RE/threadpool/thread_pool.cpp \
+	RE/request_engine.cpp \
+	storage/storage.cpp \
+	utils/epoll/epoll.cpp \
+	utils/fail_checker/fail_checker.cpp \
+	utils/semaphore/semaphore.cpp
+	
+headers = \
+	driver_proxy/udp_util/udp_util.hpp \
+	driver_proxy/driver_proxy_slave.hpp \
+	driver_proxy/driver_proxy.hpp \
+	RE/gateway/gateways.hpp \
+	RE/pnp/observer.hpp \
+	RE/pnp/plug_and_play.hpp \
+	RE/tasks/tasks.hpp \
+	RE/threadpool/thread_pool.hpp \
+	RE/threadpool/wpq.hpp \
+	RE/factory.hpp \
+	RE/request_engine.hpp \
+	storage/storage.hpp \
+	utils/epoll/epoll.hpp \
+	utils/fail_checker/fail_checker.hpp \
+	utils/handleton/handleton.hpp \
+	utils/semaphore/semaphore.hpp \
+	utils/scope_lock.hpp
+	
+all_src_lib = liball_cpp.so
+
 
 # others
-all_libs_for_slave =./$(globals_lib) ./$(all_cpp_lib)
+all_libs_for_slave =./$(all_src_lib) ./$(globals_lib)
+
 
 ################ main commands ####################
 .PHONY : slave clean
@@ -33,27 +64,23 @@ all_libs_for_slave =./$(globals_lib) ./$(all_cpp_lib)
 # explaination for slave: since there is a bug with the handleton when calling
 # to Storage explicit .so lib (via p&p), only the slave tasks file is linked
 # with cloudio_slave.out implicitly, and not via the p&p directory.
-slave : $(all_cpp_lib) $(SLAVE_out)
+slave : $(all_src_lib) $(SLAVE_out)
 
 clean:
-	rm -f *.so *.a *.o *.out
+	rm -rf *.so *.a *.o *.out *.gch *.out backup_storage plugins/
 
 
 ################ secondary rules ####################
-# special rule to make shared lib from global.cpp. global should
-# use only this rule.
+
+# make shared lib from globals.cpp.
 $(globals_lib) : $(global_source)
 	g++ $(flags) $(so_flag) $< -o $@
 
-# make any object file
-%.o : %.cpp $(headers)
-	g++ $(flags) -fPIC -c $< -o $@
-
 # make a shared library with all the .cpp files
-$(all_cpp_lib) : $(objects) $(headers) $(globals_lib)
-	g++ $(flags) $(so_flag) $(objects) ./$(globals_lib) -o $@
+$(all_src_lib) : $(sources) $(globals_lib) $(headers)
+	g++ $(flags) $(so_flag) $(sources) ./$(globals_lib) -o $@
 
-
+# make the app
 $(SLAVE_out) : $(SLAVE_src) $(all_libs_for_slave)
 	g++ $(flags) $< $(all_libs_for_slave) -o $@ $(end_flags)
 

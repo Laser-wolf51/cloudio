@@ -19,12 +19,12 @@
 #include <cstring>	// memset
 #include <iostream>
 
-#include "driver_proxy.hpp"
-#include "request_engine.hpp"
-#include "check_fail.hpp"
-#include "gateways.hpp"
-#include "slaves_manager.hpp"
-#include "driver_proxy_nbd.hpp"
+#include "utils/fail_checker/fail_checker.hpp"
+#include "driver_proxy/driver_proxy.hpp"
+#include "driver_proxy/driver_proxy_nbd.hpp"
+#include "RE/gateway/gateways.hpp"
+#include "RE/request_engine.hpp"
+#include "slaves_manager/slaves_manager.hpp"
 
 using namespace hrd8;
 

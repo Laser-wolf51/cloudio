@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "create storage"
-touch storage
+touch backup_storage
 
 echo "create plugins dir"
 mkdir ./plugins

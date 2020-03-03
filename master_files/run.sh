@@ -9,6 +9,7 @@ echo 4 | sudo tee /sys/block/nbd1/queue/max_sectors_kb;
 sudo gnome-terminal --tab -- bash -c '
 echo "run: ./cloudio_master.out /dev/nbd1"
 sudo ./cloudio_master.out /dev/nbd1
+echo "unmounting...."
 sudo umount ./cloud
 exec bash'
 

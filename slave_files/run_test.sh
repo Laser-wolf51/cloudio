@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "create storage"
-touch storage
+touch backup_storage
 
 echo "create plugins dir"
 mkdir ./plugins
@@ -13,7 +13,7 @@ echo "run slave: ./cloudio_slave.out"
 ./cloudio_slave.out
 
 echo "cleaning"
-rm storage
+rm backup_storage
 rm -r ./plugins/
 
 # NOTE: the path "/usr/local/lib" was added to a file named "/etc/ld.so.conf",

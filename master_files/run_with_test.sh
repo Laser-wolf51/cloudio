@@ -14,33 +14,56 @@ mkdir ./plugins
 echo "calling make"
 make master
 
-sudo gnome-terminal -x sh -c '
-echo "sleeps 10 seconds..."
-sleep 10
+# run the application from a new terminal
+sudo gnome-terminal --tab -- bash -c '
+echo "run: ./cloudio_master.out /dev/nbd1"
+sudo ./cloudio_master.out /dev/nbd1
+echo "unmounting...."
+sudo umount ./cloud
+exec bash'
+
+# defining a function to prepare the app
+function connect()
+{
+echo "Have all the slaves been connected...?[y/n]"
+read answer
+if [ $answer != "y" ]
+then
+	echo "your answer wasn't 'y'"
+	return 1
+fi
+
 echo "creating ext4:"
-sudo mkfs.ext4 /dev/nbd0
-echo "mkdir mnt"
-mkdir mnt
-echo "mount mnt:"
-sudo mount /dev/nbd0 ./mnt
-echo "change permission to mnt:"
-sudo chmod 777 mnt/
+if ! sudo mkfs.ext4 /dev/nbd1
+then
+	echo "failed creating ext4"
+	return 1
+fi
+
+echo "mkdir cloud"
+mkdir cloud
+# if fails, it only means the folder allready exsists.
+
+if ! sudo mount /dev/nbd1 ./cloud
+then
+	echo "failed mounting"
+	return 1
+fi
+
+echo "changing directory permissions"
+sudo chmod 777 cloud
+
 echo "and now test:"
 cd mnt
 echo "creating a test.txt file and write into it..."
 ../test_script.sh
 cd ..
-echo "done."
-exec bash'
 
-# sudo gnome-terminal -x sh -c '
-# sleep 17
-# echo "creating ext4:"
-# sudo mkfs.ext4 /dev/nbd0
-# exec bash'
+echo "DONE."
+}
 
-echo "run: ./cloudio_master.out /dev/nbd0"
-sudo ./cloudio_master.out /dev/nbd0;
+# now executing it
+connect
 
 # NOTE: the path "/usr/local/lib" was added to a file named "/etc/ld.so.conf",
 # then a command "sudo ldconfig" was entered.
