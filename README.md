@@ -43,4 +43,4 @@ plugins/ .
 
 # How to run:
 1. in the configuration files, update the master_ip & define a port for each slave.
-2. run the 'run...' script.
+2. run the 'run.sh' script.
