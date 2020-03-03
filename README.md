@@ -33,14 +33,14 @@ the program's objects using their RAII.
 # How to build:
 Requirements: Linux OS, download libconfig.
 
-1. in the slave directory - run 'make slave'.
-2. copy to the slave devices the files:
-cloudio_slave.out, run.sh, slave_config.cfg, liball_cpp.so, libglobal.so.
-3. in the master directory - run 'make master'.
-4. copy to the master device the files:
-cloudio_master.out, run.sh, master_config.cfg, liball_cpp.so, libglobal.so,
+1. in the slave directory - run 'make'.
+2. copy to the slave machine the files:
+slave_main.out, run.sh, slave_config.cfg, liball_cpp.so, libglobal.so.
+3. in the master directory - run 'make'.
+4. copy to the master machine the files:
+master_main.out, run.sh, master_config.cfg, liball_cpp.so, libglobal.so,
 plugins/ .
 
 # How to run:
-1. in the configuration files, update the master_ip.
+1. in the configuration files, update the master_ip & define a port for each slave.
 2. run the 'run...' script.

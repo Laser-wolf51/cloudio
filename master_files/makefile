@@ -9,8 +9,8 @@ end_flags = -lconfig++ -pthread -ldl
 so_flag = -fPIC -shared
 
 # app
-MASTER_src = cloudio_master.cpp
-MASTER_out = cloudio_master.out
+MASTER_src = master_main.cpp
+MASTER_out = master_main.out
 
 # for global.so
 global_source = utils/handleton/global.cpp
@@ -65,7 +65,7 @@ plugins_dir = ./plugins
 master : $(all_src_lib) $(MASTER_out)
 
 clean:
-	rm -rf *.so *.a *.o *.gch *.out plugins/
+	rm -rf *.so *.a *.o *.gch *.out plugins/ cloud/
 
 
 ################ secondary rules ####################

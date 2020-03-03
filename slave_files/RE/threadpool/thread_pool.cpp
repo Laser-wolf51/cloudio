@@ -203,7 +203,8 @@ namespace hrd8
 	}
 
 // static member initializer
-	const std::chrono::milliseconds ThreadPool::default_timeout = {std::chrono::milliseconds(10)};
+	const std::chrono::milliseconds ThreadPool::default_timeout = 
+		{std::chrono::milliseconds(10)};
 
 // === thread_func ===
 	void ThreadPool::thread_func()

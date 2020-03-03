@@ -66,7 +66,7 @@ extern "C"
 		catch(const std::exception& e)
 		{
 			std::cerr << "SendToCloudTask: " << e.what() << '\n';
-			// throw(e);
+			throw(e);
 		}
 	}
 
@@ -98,7 +98,7 @@ extern "C"
 		catch(const std::exception& e)
 		{
 			std::cerr << "SendToNBDTask: " << e.what() << '\n';
-			// throw(e); TODO:
+			throw(e);
 		}
 	}
 

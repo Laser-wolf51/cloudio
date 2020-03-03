@@ -70,7 +70,7 @@ void update_factory()
 		catch(const std::exception& e)
 		{
 			std::cerr << "ReadTask: " << e.what() << '\n';
-			// throw(e);
+			throw(e);
 		}
 	}
 
@@ -110,7 +110,7 @@ void update_factory()
 		catch(const std::exception& e)
 		{
 			std::cerr << "WriteTask: " << '\n';
-			// throw(e);
+			throw(e);
 		}
 	}
 

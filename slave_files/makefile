@@ -10,8 +10,8 @@ end_flags = -lconfig++ -pthread -ldl
 so_flag = -fPIC -shared
 
 # app
-SLAVE_src = cloudio_slave.cpp
-SLAVE_out = cloudio_slave.out
+SLAVE_src = slave_main.cpp
+SLAVE_out = slave_main.out
 
 # for global.so
 global_source = utils/handleton/global.cpp
@@ -63,7 +63,7 @@ all_libs_for_slave =./$(all_src_lib) ./$(globals_lib)
 
 # explaination for slave: since there is a bug with the handleton when calling
 # to Storage explicit .so lib (via p&p), only the slave tasks file is linked
-# with cloudio_slave.out implicitly, and not via the p&p directory.
+# with slave_main.out implicitly, and not via the p&p directory.
 slave : $(all_src_lib) $(SLAVE_out)
 
 clean:
