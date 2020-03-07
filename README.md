@@ -1,7 +1,8 @@
 # Cloudio - a backup application across multiple devices
 Cloudio is a backup application, designed to be managed from 1 central device
 while saving the files on the storage of multiple other devices (known as
-master-slave architecture).
+master-slave architecture).  
+Including a generic framework which handles most of the app activity.
 
 This project is written in C++(std 11) and uses multi-threading, OOD, 
 networking, design patterns, Bash-scripting, makefiles, configuration files, 
