@@ -51,7 +51,4 @@ echo "DONE."
 connect
 
 
-# NOTE about libconfig: the path "/usr/local/lib" was added to a file named 
-# "/etc/ld.so.conf", then a command "sudo ldconfig" was entered.
-# This allowed my program to find and link the libconfig files.
 
