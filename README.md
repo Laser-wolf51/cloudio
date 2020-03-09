@@ -28,8 +28,8 @@ Runtime configurable - this feature allows to add into a special directory a
 Generic - the main events-loop takes part inside a generic automated framework
 called 'Request Engine', common for both the slave & master programs.
 
-When receiving a SIGINT signal (^C) - exit 'gracefully', while grdually closing
-the program's objects using their RAII.
+When receiving a SIGINT signal (^C) - exits 'gracefully', while grdually closing
+the program objects using their RAII.
 
 # How to build:
 Requirements: Linux OS, download libconfig.
