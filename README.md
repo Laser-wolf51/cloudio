@@ -4,9 +4,9 @@ while saving the files on the storage of multiple other devices (known as
 master-slave architecture).  
 Including a generic framework which handles most of the app activity.
 
-This project is written in C++(std 11) and uses multi-threading, OOD, 
-networking, design patterns, Bash-scripting, makefiles, configuration files, 
-NBD, and other tools.
+This project is written in C++(std 11) and uses multi-threading, networking, 
+design patterns, Bash-scripts, makefiles, configuration files, 
+Linux NBD, and other tools.
 
 # Main added values & abilities of this app:
 Cheap - a lot of free storage space already exists in each device.
