@@ -32,7 +32,7 @@ When receiving a SIGINT signal (^C) - exits 'gracefully', while grdually closing
 the program objects using their RAII.
 
 # How to build:
-Requirements: Linux OS, download libconfig.
+Requirements: Linux OS, libconfig installed.
 
 1. in the slave directory - run 'make'.
 2. copy to the slave machine the files:
