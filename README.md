@@ -1,4 +1,4 @@
-# Cloudio - a backup application across multiple devices
+# Cloudio - a distributed-storage backup application
 Cloudio is a backup application, designed to be managed from 1 central device
 while saving the files on the storage of multiple other devices (known as
 master-slave architecture).  
